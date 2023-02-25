@@ -1,9 +1,13 @@
 import { useMyContext } from "./Context";
 
 function Submenu() {
-  const { showSub, sublink } = useMyContext();
+  const { showSub, sublink, styleRef } = useMyContext();
+
   return (
-    <aside className={`submenu ${showSub && sublink && "show"}`}>
+    <aside
+      className={`submenu ${showSub && sublink && "show"}`}
+      style={{ left: `${styleRef.current}px` }}
+    >
       <section>
         {showSub && sublink && (
           <>

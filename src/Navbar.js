@@ -4,14 +4,18 @@ import sublinks from "./data";
 
 import logo from "./images/logo.svg";
 function Navbar() {
-  const { openSide, openSub, closeSub, setSublink } = useMyContext();
-  
+  const { openSide, openSub, closeSub, setSublink, styleRef } = useMyContext();
+
   const handleHoverIn = (e) => {
     const [currentSub] = sublinks.filter(
       (sub) => sub.page === e.target.textContent
     );
     setSublink(currentSub);
     openSub();
+    const left = e.target.getBoundingClientRect().left;
+    const halfWidth = e.target.getBoundingClientRect().width / 2;
+    // styleRef.current.style.left = `${left + halfWidth}px`;
+    styleRef.current = left + halfWidth;
   };
 
   const handleHoverOut = (e) => {

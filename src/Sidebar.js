@@ -5,7 +5,9 @@ import sublinks from "./data";
 function Sidebar() {
   const { closeSide, showSide } = useMyContext();
   return (
-    <aside className={`sidebar-wrapper ${showSide && "show"}`}>
+    <aside
+      className={`sidebar-wrapper ${showSide && "show"}`}
+    >
       <div className="sidebar">
         <button className="close-btn" onClick={closeSide}>
           <FaTimes />
