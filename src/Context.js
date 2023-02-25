@@ -4,9 +4,9 @@ import sublinks from "./data";
 const MyContext = createContext();
 
 function Conetxt({ children }) {
-  const [showSub, setShowSub] = useState(true);
+  const [showSub, setShowSub] = useState(false);
   const [showSide, setShowSide] = useState(false);
-  const [subs, setSubs] = useState(sublinks);
+  const [sublink, setSublink] = useState({});
 
   const openSub = () => {
     setShowSub(true);
@@ -23,7 +23,7 @@ function Conetxt({ children }) {
 
   return (
     <MyContext.Provider
-      value={{ showSub, showSide, openSub, closeSub, openSide, closeSide }}
+      value={{ showSub, showSide, openSub, closeSub, openSide, closeSide, setSublink, sublink }}
     >
       {children}
     </MyContext.Provider>

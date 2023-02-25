@@ -1,9 +1,23 @@
 import { useMyContext } from "./Context";
 import { FaBars } from "react-icons/fa";
+import sublinks from "./data";
 
 import logo from "./images/logo.svg";
 function Navbar() {
-  const { showSide, openSide, closeSide } = useMyContext();
+  const { openSide, openSub, closeSub, setSublink } = useMyContext();
+  
+  const handleHoverIn = (e) => {
+    const [currentSub] = sublinks.filter(
+      (sub) => sub.page === e.target.textContent
+    );
+    setSublink(currentSub);
+    openSub();
+  };
+
+  const handleHoverOut = (e) => {
+    closeSub();
+  };
+
   return (
     <nav className="nav">
       <div className="nav-center">
@@ -15,13 +29,31 @@ function Navbar() {
         </div>
         <ul className="nav-links">
           <li>
-            <button className="link-btn">products</button>
+            <button
+              onMouseEnter={handleHoverIn}
+              onMouseLeave={handleHoverOut}
+              className="link-btn"
+            >
+              products
+            </button>
           </li>
           <li>
-            <button className="link-btn">developers</button>
+            <button
+              onMouseEnter={handleHoverIn}
+              onMouseLeave={handleHoverOut}
+              className="link-btn"
+            >
+              developers
+            </button>
           </li>
           <li>
-            <button className="link-btn">company</button>
+            <button
+              onMouseEnter={handleHoverIn}
+              onMouseLeave={handleHoverOut}
+              className="link-btn"
+            >
+              company
+            </button>
           </li>
         </ul>
         <button className="btn signin-btn">Sign in</button>
