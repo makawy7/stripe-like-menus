@@ -1,8 +1,6 @@
-import { useMyContext } from "./Context";
 import pImage from "./images/phone.svg";
 
 function Hero() {
-  const { closeSub } = useMyContext();
   return (
     <section className="hero">
       <div className="hero-center">

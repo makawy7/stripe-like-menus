@@ -1,10 +1,11 @@
 import { useMyContext } from "./Context";
 
 function Submenu() {
-  const { showSub, sublink, styleRef } = useMyContext();
+  const { showSub, sublink, styleRef, closeSub } = useMyContext();
 
   return (
     <aside
+      onMouseLeave={closeSub}
       className={`submenu ${showSub && sublink && "show"}`}
       style={{ left: `${styleRef.current}px` }}
     >

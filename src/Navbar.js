@@ -11,6 +11,7 @@ function Navbar() {
       (sub) => sub.page === e.target.textContent
     );
     setSublink(currentSub);
+
     openSub();
     const left = e.target.getBoundingClientRect().left;
     const halfWidth = e.target.getBoundingClientRect().width / 2;
@@ -18,8 +19,11 @@ function Navbar() {
     styleRef.current = left + halfWidth;
   };
 
-  const handleHoverOut = (e) => {
-    closeSub();
+  const handleHoveOut = (e) => {
+    const { relatedTarget } = e;
+    if (relatedTarget && relatedTarget.tagName !== "ASIDE") {
+      closeSub();
+    }
   };
 
   return (
@@ -35,7 +39,7 @@ function Navbar() {
           <li>
             <button
               onMouseEnter={handleHoverIn}
-              onMouseLeave={handleHoverOut}
+              onMouseLeave={handleHoveOut}
               className="link-btn"
             >
               products
@@ -44,7 +48,7 @@ function Navbar() {
           <li>
             <button
               onMouseEnter={handleHoverIn}
-              onMouseLeave={handleHoverOut}
+              onMouseLeave={handleHoveOut}
               className="link-btn"
             >
               developers
@@ -53,7 +57,7 @@ function Navbar() {
           <li>
             <button
               onMouseEnter={handleHoverIn}
-              onMouseLeave={handleHoverOut}
+              onMouseLeave={handleHoveOut}
               className="link-btn"
             >
               company

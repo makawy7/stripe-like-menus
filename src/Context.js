@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useRef } from "react";
-import sublinks from "./data";
+
 
 const MyContext = createContext();
 
@@ -7,6 +7,7 @@ function Conetxt({ children }) {
   const [showSub, setShowSub] = useState(false);
   const [showSide, setShowSide] = useState(false);
   const [sublink, setSublink] = useState({});
+
   const styleRef = useRef(null);
 
   const openSub = () => {
@@ -33,7 +34,7 @@ function Conetxt({ children }) {
         closeSide,
         setSublink,
         sublink,
-        styleRef
+        styleRef,
       }}
     >
       {children}
